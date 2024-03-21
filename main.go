@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 const fileName = "stored-cards.txt"
 
 func main() {
@@ -8,4 +10,8 @@ func main() {
 
 	deck.Shuffle()
 	deck.print()
+
+	k := deck.Deal()
+	fmt.Println("this is k: ", k)
+
 }
