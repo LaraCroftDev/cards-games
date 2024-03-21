@@ -1,19 +1,21 @@
 package main
 
-import "fmt"
-
 const fileName = "stored-cards.txt"
 
 func main() {
-	newDeck := NewDeck()
-	shuffledDeck := Shuffle(newDeck)
-	Printer(shuffledDeck)
+	deck := NewDeck()
+	deck.Shuffle()
+	deck.Printer()
 
-	hands := Deal(newDeck)
-	for i, hand := range hands {
-		fmt.Println("Player: ", i+1, " Hand: ", hand)
-	}
+	// shuffledDeck := Shuffle(newDeck)
 
-	FileSaver(shuffledDeck, fileName)
-	FileSaver(hands, fileName)
+	// Printer(shuffledDeck)
+
+	// hands := Deal(newDeck)
+	// // for i, hand := range hands {
+	// // 	fmt.Println("Player: ", i+1, " Hand: ", hand)
+	// // }
+
+	// FileSaver(shuffledDeck, fileName)
+	// FileSaver(hands, fileName)
 }
