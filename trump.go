@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 const (
 	playerCount = 4 // This is a 4 player game
 )
@@ -42,4 +44,11 @@ func debugTrumpHands(hands [][]card) error {
 		}
 	}
 	return nil
+}
+
+func printTrump(hands [][]card) {
+	for i, d := range hands {
+		fmt.Println("Player ", i+1, " cards: ")
+		Deck(d).print()
+	}
 }

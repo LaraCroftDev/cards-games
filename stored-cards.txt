@@ -1,0 +1,4 @@
+SevenSpade, EightDiamond, JackDiamond, QueenDiamond, FiveClub, EightHeart, KingHeart, SevenHeart, KingClub, FourDiamond, ThreeHeart, SixHeart, KingSpade
+TwoClub, AceSpade, SixClub, NineHeart, TwoHeart, QueenSpade, SevenClub, TwoSpade, ThreeDiamond, FiveHeart, TenSpade, AceClub, NineDiamond
+ThreeSpade, FiveDiamond, KingDiamond, SixDiamond, AceHeart, FourSpade, FourClub, EightSpade, TenClub, ThreeClub, JackSpade, SixSpade, TwoDiamond
+FourHeart, JackClub, QueenClub, SevenDiamond, FiveSpade, NineSpade, AceDiamond, JackHeart, EightClub, TenHeart, TenDiamond, NineClub, QueenHeart

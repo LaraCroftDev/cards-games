@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 const fileName = "stored-cards.txt"
 
 func main() {
@@ -12,6 +10,8 @@ func main() {
 	deck.print()
 
 	k := deck.Deal()
-	fmt.Println("this is k: ", k)
+	SaveToFile(k, fileName)
+	printTrump(k)
 
+	ReadDeckFromFile(fileName)
 }
