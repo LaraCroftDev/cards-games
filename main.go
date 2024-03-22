@@ -4,18 +4,14 @@ const fileName = "stored-cards.txt"
 
 func main() {
 	deck := NewDeck()
+	deck.print()
+
 	deck.Shuffle()
-	deck.Printer()
+	deck.print()
 
-	// shuffledDeck := Shuffle(newDeck)
+	k := deck.Deal()
+	SaveToFile(k, fileName)
+	printTrump(k)
 
-	// Printer(shuffledDeck)
-
-	// hands := Deal(newDeck)
-	// // for i, hand := range hands {
-	// // 	fmt.Println("Player: ", i+1, " Hand: ", hand)
-	// // }
-
-	// FileSaver(shuffledDeck, fileName)
-	// FileSaver(hands, fileName)
+	ReadDeckFromFile(fileName)
 }

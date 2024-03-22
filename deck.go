@@ -5,48 +5,41 @@ import (
 	"math/rand"
 )
 
+var ranks = [rankCount]string{"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
+var suits = [suitCount]string{"Heart", "Diamond", "Club", "Spade"}
+
 const (
-	suitNum  = 4
-	typeNum  = 13
-	cardsNum = 52
+	suitCount  = 4
+	rankCount  = 13
+	cardsCount = 52
 )
 
-type Card struct {
-	Type string
-	Suit string
+type card struct {
+	rank string
+	suit string
 }
-type Deck []Card
+
+type Deck []card
 
 func NewDeck() Deck {
-	types := [typeNum]string{"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
-	suits := [suitNum]string{"Heart", "Diamond", "Club", "Spade"}
-
-	deck := make(Deck, cardsNum)
-	n := 0
-	m := 0
-
-	for i := 0; i < cardsNum; i++ {
-		if m == typeNum {
-			n++
-			m = 0
+	deck := make(Deck, cardsCount)
+	deck = nil
+	for _, s := range suits {
+		for _, r := range ranks {
+			deck = append(deck, card{rank: r, suit: s})
 		}
-		deck[i].Suit = suits[n]
-		deck[i].Type = types[m]
-		m++
 	}
 	return deck
 }
 
 func (d Deck) Shuffle() {
-	for i := 0; i < cardsNum; i++ {
-		randIndex := rand.Intn(cardsNum)
-		// Swap current card with random Index card
-		d[i], d[randIndex] = d[randIndex], d[i]
-	}
+	rand.Shuffle(len(d), func(i, j int) {
+		d[i], d[j] = d[j], d[i]
+	})
 }
 
-func (d Deck) Printer() {
+func (d Deck) print() {
 	for _, card := range d {
-		fmt.Println(card.Type, card.Suit)
+		fmt.Println(card.rank, card.suit)
 	}
 }
