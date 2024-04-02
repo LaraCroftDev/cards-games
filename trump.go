@@ -122,21 +122,30 @@ func (d Deck) singleHand(index, count int) []card {
 	return d[index : index+count]
 }
 
-// toString func has the ability to convert Deck and []Deck types of data into a single string
 func toString(data interface{}) string {
-	var s []string
-	if deck, ok := data.(Deck); ok {
-		for _, card := range deck {
-			s = append(s, card.rank+card.suit)
-		}
-		return strings.Join(s, ", ")
+	switch d := data.(type) {
+	case Deck:
+		return joinCards(d)
+	case []Deck:
+		return joinHands(d)
+	default:
+		// log some error potentially
+		return ""
 	}
+}
 
-	ret := ""
-	if hands, ok := data.([]Deck); ok {
-		for _, hand := range hands {
-			ret = ret + toString(hand) + "\n"
-		}
+func joinCards(deck Deck) string {
+	cards := make([]string, len(deck))
+	for i, card := range deck {
+		cards[i] = card.rank + card.suit
 	}
-	return ret
+	return strings.Join(cards, ", ")
+}
+
+func joinHands(hands []Deck) string {
+	handStrings := make([]string, len(hands))
+	for i, hand := range hands {
+		handStrings[i] = joinCards(hand)
+	}
+	return strings.Join(handStrings, "\n")
 }
