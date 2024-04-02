@@ -5,13 +5,14 @@ const fileName = "stored-cards.txt"
 func main() {
 	deck := NewDeck()
 	deck.print()
+	err := SaveToFile(deck, fileName)
+	if err != nil {
+	}
 
 	deck.Shuffle()
-	deck.print()
-
 	k := deck.Deal()
-	SaveToFile(k, fileName)
 	printTrump(k)
-
-	ReadDeckFromFile(fileName)
+	err = SaveToFile(k, fileName)
+	if err != nil {
+	}
 }
